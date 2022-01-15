@@ -1,4 +1,4 @@
-package dev.marco.example.springboot;
+package dev.borczeangelov.poc.springboot;
 
 public class PingServerRespone {
     private String message;

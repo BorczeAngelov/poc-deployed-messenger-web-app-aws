@@ -1,4 +1,4 @@
-package dev.marco.example.springboot;
+package dev.borczeangelov.poc.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
