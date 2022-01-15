@@ -1,14 +1,28 @@
-<h3>Message-board works!</h3>
-
-<div class="example-container">
-  asd
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your email</mat-label>
-  </mat-form-field>
-</div>
-
-  
-
 <div>
-    <label>Message board title = {{(messageBoardService.messageBoard$ | async)?.title}}</label>
+  <label>Message board title = {{(messageBoardService.messageBoard$ | async)?.title}}</label>
 </div>
+
+
+
+<mat-divider></mat-divider>
+
+<table>
+  <td>
+    <mat-form-field class="example-full-width">
+      <mat-label>User name</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </td>
+
+  <td>
+    <mat-form-field class="example-full-width">
+      <mat-label>Message</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </td>
+
+
+  <td>
+    <button  mat-raised-button color="primary">Post</button>
+  </td>
+</table>
