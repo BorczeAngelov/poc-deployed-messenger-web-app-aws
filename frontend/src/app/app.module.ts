@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PingServerComponent } from './ping-server/ping-server.component';
+import { MessageBoardComponent } from './message-board/message-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PingServerComponent
+    PingServerComponent,
+    MessageBoardComponent
   ],
   imports: [
     BrowserModule,
