@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageBoardService } from './message-board.service';
+import {MatFormFieldModule} from '@angular/material/form-field'; 
 
 @Component({
   selector: 'app-message-board',
