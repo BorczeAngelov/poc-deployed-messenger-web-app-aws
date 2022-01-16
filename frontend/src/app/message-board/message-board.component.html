@@ -3,15 +3,21 @@
   <mat-list ma>
     <h3 mat-header>{{(messageBoardService.messageBoard$ | async)?.title}}</h3>
 
-    <button (click)="loadMessageBoard()" mat-raised-button color="primary">
-      Refresh Message Board
-    </button>
+    <div>
+      <button (click)="loadMessageBoard()" mat-raised-button color="primary" style="margin-bottom: 10px;">
+        Refresh Message Board
+      </button>
+    </div>
 
-    <mat-list-item *ngFor="let item of (messageBoardService.messageBoard$ | async)?.messages" style="height: 60px;">
-      <label mat-line>{{item.user}}: {{item.content}}</label>
-      <label mat-line>Timestamp: {{(item.timeStamp)}} </label>
-      <mat-divider></mat-divider>
-    </mat-list-item>
+    <cdk-virtual-scroll-viewport appendOnly itemSize="50px" class="example-viewport">
+      <div *cdkVirtualFor="let item of (messageBoardService.messageBoard$ | async)?.messages" class="example-item">
+
+        <label mat-line>{{item.user}}: {{item.content}}</label>
+        <div>
+          <label mat-line>Timestamp: {{(item.timeStamp)}} </label>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
   </mat-list>
 
   <mat-divider></mat-divider>
@@ -33,8 +39,8 @@
 
 
     <td>
-      <button mat-raised-button color="primary" style="margin-left: 20px;"
-      (click)="sendMessage()">
+      <button mat-raised-button color="primary" style="margin-left: 20px;" (click)="sendMessage()"
+        [disabled]="!userName || !message">
         Send Message
       </button>
     </td>
