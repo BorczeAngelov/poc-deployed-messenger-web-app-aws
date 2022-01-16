@@ -22,6 +22,10 @@ export class MessageBoardComponent implements OnInit {
     this.messageBoardService.loadMessageBoard();
   }
 
+  clearMessageBoard(): void {
+    this.messageBoardService.clearMessageBoard();
+  }
+
   sendMessage(): void {
 
     if (this.message) {

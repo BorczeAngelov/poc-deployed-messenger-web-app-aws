@@ -30,9 +30,15 @@ export class MessageBoardService {
     this.messageBoard$ = this.http.get<MessageBoard>(this.serverUrl + '/api/messageboard/getmessageboard');
   }
 
-
   sendMessage(newMessage: Message) {
     this.http.post<MessageBoard>(this.serverUrl + '/api/messageboard/postmessage', newMessage)
+      .pipe(
+        tap(_ => this.loadMessageBoard())
+      ).subscribe();
+  }
+  
+  clearMessageBoard() {
+    this.http.get<MessageBoard>(this.serverUrl + '/api/messageboard/clearmessageboard')
       .pipe(
         tap(_ => this.loadMessageBoard())
       ).subscribe();

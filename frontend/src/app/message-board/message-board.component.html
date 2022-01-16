@@ -1,11 +1,16 @@
 <div style="width: 750px;">
 
   <mat-list ma>
-    <h3 mat-header>{{(messageBoardService.messageBoard$ | async)?.title}}</h3>
+    <h3 mat-header>Message Board Title: {{(messageBoardService.messageBoard$ | async)?.title}}</h3>
 
     <div>
       <button (click)="loadMessageBoard()" mat-raised-button color="primary" style="margin-bottom: 10px;">
         Refresh Message Board
+      </button>
+
+      <button (click)="clearMessageBoard()" mat-raised-button color="warn" style="margin: 10px;"
+      [disabled]="(messageBoardService.messageBoard$ | async)?.messages.length === 0">
+        Clear Message Board
       </button>
     </div>
 

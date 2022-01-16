@@ -25,6 +25,9 @@ public class MessageBoardController {
 
     @PostMapping(value = "/api/messageboard/postmessage")
     public MessageBoard postMessage(@RequestBody Message newMessage) {
+        newMessage.setId(messageBoard.getMessages().length);
+        newMessage.setTimeStamp(LocalTime.now());
+
         Message[] oldMessages = messageBoard.getMessages();
         Message[] newMessages = Arrays.copyOf(oldMessages, oldMessages.length + 1);
         newMessages[oldMessages.length] = newMessage;
@@ -33,14 +36,19 @@ public class MessageBoardController {
         return messageBoard;
     }
 
+    @RequestMapping(value = "/api/messageboard/clearmessageboard")
+    public MessageBoard clearMessageBoard() {
+        messageBoard.setMessages(new Message[0]);
+        return messageBoard;
+    }
+
     private static MessageBoard InitialiseMessageBoard() {
         LocalTime localTime = LocalTime.now();
-        String title = "This is server generated message board." +
+        String title = "Server generated message board." +
                 " LocalTime = " + localTime;
 
         Message[] messages = new Message[] {
-                new Message(1, "Cloud Server", "Hi, this is the first message from the cloud", localTime),
-                new Message(2, "Cloud Server", "And this is the second message from the cloud", localTime)
+                new Message(0, "Cloud Server", "Hi, this is the first message from the cloud", localTime)
         };
 
         return new MessageBoard(title, messages);
